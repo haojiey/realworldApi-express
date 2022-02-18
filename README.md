@@ -50,9 +50,6 @@ sudo mv mongodb-osx-x86_64-4.0.9/ mongodb
 - --dbpath 指定为刚才创建好的data目录
 - --logpath 指定log存放位置
 - --logappend mongo在后台运行
-
-- --dbpath 设置数据存放目录
-- --logpath 设置日志存放目录
 - --fork 在后台运行
 
 #### 查看 mongod 服务是否启动：
