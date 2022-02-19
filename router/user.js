@@ -1,45 +1,17 @@
 const express = require('express');
 
 const router = express.Router();
-
+const userCtrl = require('../controller/user')
 // 用户登录
-router.post('/users/login', async (req,res,next) => {
-    try {
-        // 处理请求
-        res.send('hello world')
-    } catch (error) {
-        next(error)
-    }
-})
+router.post('/users/login', userCtrl.login)
 
 // 获取当前登录用户
-router.get('/user', async (req,res,next) => {
-    try {
-        // 处理请求
-        res.send('get user')
-    } catch (error) {
-        next(error)
-    }
-})
+router.get('/user', userCtrl.currentUser)
 
 // 更新当前登录用户
-router.put('/user', async (req,res,next) => {
-    try {
-        // 处理请求
-        res.send('put user')
-    } catch (error) {
-        next(error)
-    }
-})
+router.put('/user', userCtrl.updateUser)
 
 // 用户注册
-router.post('/users', async (req,res,next) => {
-    try {
-        // 处理请求
-        res.send('hello world')
-    } catch (error) {
-        next(error)
-    }
-})
+router.post('/users', userCtrl.register)
 
 module.exports = router

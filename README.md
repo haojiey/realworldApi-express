@@ -18,7 +18,7 @@ sudo mv mongodb-osx-x86_64-4.0.9/ mongodb
 #### 配置环境变量
 
  - 1、在终端中输出 "open -e .bash_profile"，打开bash_profile文件。
- - 2、将安装目录的bin目录地址 "export PATH=/usr/local/mongodb/bin:$PATH" 添加到环境变量中。
+ - 2、将安装目录的bin目录地址 "export PATH=${PATH}:/usr/local/mongoDB/bin" 添加到环境变量中。
  - 3、Command+S保存配置，关闭上面的.bash_profile编辑窗口。
  - 4、在终端中输入"source .bash_profile"使配置立即生效。
  - 5、在终端中输入 "mongod -version"，如果出现如下信息则说明path配资环和安装都已成功

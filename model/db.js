@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/test');
+mongoose.connect('mongodb://localhost/realworld-express');
 
 const Cat = mongoose.model('Cat', { name: String });
 
