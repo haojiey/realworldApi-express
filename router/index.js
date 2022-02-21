@@ -9,7 +9,7 @@ router.use(require('./user'))
 router.use('/profiles', require('./profile'))
 
 // 文章相关路由
-router.use("/articles", require("./article"));
+router.use("/articles", require("./articles"));
 
 // 标签相关路由
 router.use(require("./tag"));

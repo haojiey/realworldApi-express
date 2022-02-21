@@ -2,6 +2,7 @@ const express = require('express');
 const morgan = require('morgan');
 const cors = require('cors');
 const router = require('./router')
+const errorHandler = require('./middleware/error-handler.js')
 
 const app = express();
 
@@ -14,6 +15,9 @@ app.use(cors())
 const PORT = process.env.PORT || 3000;
 
 app.use('/api',router)
+
+//挂载统一错误处理中间件
+app.use(errorHandler())
 
 
 
