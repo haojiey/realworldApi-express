@@ -43,6 +43,7 @@ sudo mv mongodb-osx-x86_64-4.0.9/ mongodb
 
 #### 启动服务
 
+
 `在终端中，先进入data和log所在的目录，也就是/usr/local/mongoDB ，然后输入"mongod --dbpath data --logpath log/mongod.log --logappend"，启动mongodb服务(当前终端不要关闭)`
 
 *注意：因为默认的数据保存地址为/data/db，需要手动在mac根目录(即Macintosh HD)中创建/data/db，如果改变data目录位置，则需要在启动服务时 指定dbpath的位置。*
@@ -62,6 +63,8 @@ sudo mv mongodb-osx-x86_64-4.0.9/ mongodb
 ### 自己本地操作
 
 `启动`
+>open -e .bash_profile
+>source .bash_profile
 
  > mongod --dbpath /usr/local/mongodb/data --logpath /usr/local/mongodb/log/mongo.log --logappend
 

@@ -2,4 +2,6 @@
  * 默认配置文件
  */
 
- module.exports = {}
+ module.exports = {
+     dbUrl:'mongodb://localhost/realworld-express'
+ }
