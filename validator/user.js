@@ -1,6 +1,7 @@
 const { body } = require("express-validator");
 const { User } = require("../model");
 const validator = require("../middleware/validate");
+const md5 = require('../util/md5')
 
 exports.register = validator([
   //1.配置验证规则
@@ -28,3 +29,26 @@ exports.register = validator([
       }
     }),
 ]);
+
+exports.login = [
+  validator([
+    body("user.email").notEmpty().withMessage("邮箱不能为空"),
+    body("user.password").notEmpty().withMessage("密码不能为空"),
+  ]),
+  validator([
+    body("user.email").custom(async (email,{req}) => {
+      const result = await User.findOne({ email }).select(['password','username','email','image','bio']);
+      if (!result) {
+        return Promise.reject("邮箱不存在");
+      }
+      req.user = result
+    }),
+  ]),
+  validator([
+    body("user.password").custom(async (password,{req}) => {
+        if(req.user.password !== md5(password)){
+            return Promise.reject("密码错误");
+        }
+    }),
+  ]),
+];
