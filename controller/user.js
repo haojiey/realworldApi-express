@@ -12,14 +12,16 @@ exports.login =  async (req,res,next) => {
 // 注册用户
 exports.register = async (req,res,next) => {
     try {
-        // 1.获取请求体数据
-        console.log(req.body)
-        const user = new User(req.body.user)
+        let user = new User(req.body.user)
         // 2.数据验证
         // 2.1基本数据验证
         // 2.2业务数据验证
         // 3.验证成功保存到数据库
         await user.save()
+
+        user = user.toJSON()
+
+        delete user.password
         // 4.发送成功相应
         res.status(201).json(
             user
