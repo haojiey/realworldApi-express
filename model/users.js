@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const baseModel = require('./base-model')
 var userSchema = mongoose.Schema({
     username:{
         type:String,
@@ -20,13 +21,6 @@ var userSchema = mongoose.Schema({
         type:String,
         default:null
     },
-    chartAt:{
-        type:Date,
-        default:Date.now
-    },
-    updateAt:{
-        type:Date,
-        default:Date.now
-    }
+   ...baseModel
   });
 module.exports = userSchema
