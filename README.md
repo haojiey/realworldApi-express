@@ -72,7 +72,7 @@ sudo mv mongodb-osx-x86_64-4.0.9/ mongodb
  > 关闭终端/ctrl+c
 ###
 
-.
+```js
 |-- config # 配置文件
 |-- config.default.js
 |-- controller # 用于解析用户的输入，处理后返回相应的结果
@@ -81,3 +81,5 @@ sudo mv mongodb-osx-x86_64-4.0.9/ mongodb
 |-- router # 用于哦欸之 URL 路由规则
 |-- util # 工具模块
 |-- app.js # 用于自定义启动时的初始化工作
+|--validator # 验证相关的
+```
