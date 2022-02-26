@@ -11,5 +11,6 @@ mongoose.connection.once("close", () => {
 });
 
 module.exports = {
-  User: mongoose.model('user', require('./users'))
+  User: mongoose.model('user', require('./users')),
+  Article: mongoose.model('article', require('./articles')),
 }

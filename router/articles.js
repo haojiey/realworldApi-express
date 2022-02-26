@@ -1,15 +1,22 @@
 const express = require("express");
 const router = express.Router();
+const auth = require('../middleware/auth')
+const articleCtrl = require('../controller/articles')
+const articleValidator = require('../validator/articles')
+// Create Article
+router.post("/",auth, articleValidator.createArticle,articleCtrl.createArticle);
 
+// Get Article
+router.get("/:slug", articleValidator.getArticle, articleCtrl.getArticle);
 // List Articles
-router.get("/", async (req, res, next) => {
-  try {
-    // 处理请求
-    res.send("get /");
-  } catch (err) {
-    next(err);
-  }
-});
+router.get("/", articleCtrl.getArticleList);
+
+// Update Article
+router.put("/:slug",auth, articleValidator.updateArticle,articleCtrl.updateArticle );
+
+// Delete Article
+router.delete("/:slug", auth, articleValidator.deleteArticle,articleCtrl.deleteArticle);
+
 
 // Feed Articles
 router.get("/feed", async (req, res, next) => {
@@ -21,45 +28,9 @@ router.get("/feed", async (req, res, next) => {
   }
 });
 
-// Get Article
-router.get("/:slug", async (req, res, next) => {
-  try {
-    // 处理请求
-    res.send("get /articles/:slug");
-  } catch (err) {
-    next(err);
-  }
-});
 
-// Create Article
-router.post("/", async (req, res, next) => {
-  try {
-    // 处理请求
-    res.send("post /articles");
-  } catch (err) {
-    next(err);
-  }
-});
 
-// Update Article
-router.put("/:slug", async (req, res, next) => {
-  try {
-    // 处理请求
-    res.send("put /articles/:slug");
-  } catch (err) {
-    next(err);
-  }
-});
 
-// Delete Article
-router.delete("/:slug", async (req, res, next) => {
-  try {
-    // 处理请求
-    res.send("delete /articles/:slug");
-  } catch (err) {
-    next(err);
-  }
-});
 
 // Add Comments to an Article
 router.post("/:slug/comments", async (req, res, next) => {

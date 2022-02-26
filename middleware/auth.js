@@ -12,6 +12,9 @@ module.exports = async (req, res, next) => {
   try {
     const decodeToken = await verify(token, jwtSecret);
     req.user = await User.findById(decodeToken.userId);
+    if(!req.user){
+      return res.status(401).end();
+    }
     next();
   } catch (error) {
     return res.status(401).end();
